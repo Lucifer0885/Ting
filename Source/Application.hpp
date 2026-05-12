@@ -1,13 +1,14 @@
 #pragma once
 
-#include "../Dependancies/GLFW/include/GLFW/glfw3.h"
+struct GLFWwindow;
 
 class Application {
-  public:
-  GLFWwindow* window;
+  private:
+  GLFWwindow* m_window = nullptr;
 
   public:
     Application();
     ~Application();
+    void saveSettings();
     int run();
 };

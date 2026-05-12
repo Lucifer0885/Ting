@@ -3,3 +3,4 @@ CompileFlags:
     - -ID:/Projects/CPP/ting/Dependancies/GLFW/include
     - -ID:/Projects/CPP/ting/Dependancies/GLAD
     - -ID:/Projects/CPP/ting/Source
+    - -DGLFW_INCLUDE_NONE
