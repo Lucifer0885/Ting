@@ -25,11 +25,6 @@ target_include_directories(glad
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/Dependancies/GLAD
 )
-# GLFW_INCLUDE_NONE is used to prevent the GLFW header from including the OpenGL header.
-target_compile_definitions(glad
-    PRIVATE
-        GLFW_INCLUDE_NONE
-)
 
 # Dear ImGui core + GLFW/OpenGL3 backend implementation files.
 add_library(imgui STATIC
@@ -53,6 +48,12 @@ add_executable(ting
     Source/Main.cpp
     Source/Application.cpp
     Source/Logger/Logger.cpp
+)
+
+# GLFW_INCLUDE_NONE is used to prevent the GLFW header from including the OpenGL header.
+target_compile_definitions(ting
+    PRIVATE
+        GLFW_INCLUDE_NONE
 )
 
 # Allow headers in Source to be included as "HeaderName.hpp".

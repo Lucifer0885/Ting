@@ -4,3 +4,5 @@ CompileFlags:
     - -ID:/Projects/CPP/ting/Dependancies/GLAD
     - -ID:/Projects/CPP/ting/Source
     - -DGLFW_INCLUDE_NONE
+    - -ID:/Projects/CPP/ting/Dependancies/ImGui
+    - -ID:/Projects/CPP/ting/Dependancies/ImGui/backends
