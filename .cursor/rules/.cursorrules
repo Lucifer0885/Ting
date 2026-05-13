@@ -68,3 +68,4 @@
     Follow the official ISO C++ standards and guidelines for best practices in modern C++ development.
     
     Always use the ps1 scripts in the root project for building and running.
+    Never make edits to the code unless I explicitely tell you to.

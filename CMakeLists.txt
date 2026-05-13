@@ -4,6 +4,10 @@ cmake_minimum_required(VERSION 3.20)
 # C is needed because GLAD is compiled from a C source file (glad.c).
 project(ting VERSION 0.1.0 LANGUAGES CXX C)
 
+# Helps clangd / other tools: generates Build/compile_commands.json (copy or
+# symlink to project root if your IDE only looks next to sources).
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # Global C++ language level for project targets.
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -48,6 +52,7 @@ add_executable(ting
     Source/Main.cpp
     Source/Application.cpp
     Source/Logger/Logger.cpp
+    Source/MacroManager/MacroManager.cpp
 )
 
 # GLFW_INCLUDE_NONE is used to prevent the GLFW header from including the OpenGL header.

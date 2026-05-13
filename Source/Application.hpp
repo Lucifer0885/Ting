@@ -1,9 +1,12 @@
 #pragma once
 
+#include "MacroManager/MacroManager.hpp"
+
 struct GLFWwindow;
 
 class Application {
   private:
+  MacroManager m_macroManager;
   GLFWwindow* m_window = nullptr;
   bool m_vsync = true;
   bool m_imguiInitialized = false;

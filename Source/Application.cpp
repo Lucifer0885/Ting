@@ -13,6 +13,7 @@ Application::~Application() {
   if (this->m_imguiInitialized) {
     this->destroyImGui();
   }
+  this->m_macroManager.destroy();
   if (this->m_window != nullptr){
     this->destroyWindow();
   }
@@ -135,6 +136,7 @@ void Application::renderUI() {
 void Application::runMainLoop() {
   while (!glfwWindowShouldClose(this->m_window)) {
     glfwPollEvents();
+    this->m_macroManager.poll();
 
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
@@ -181,6 +183,8 @@ int Application::run() {
     Logger::getInstance().error("Could not initialize ImGui");
     return -1;
   }
+
+  this->m_macroManager.initialize();
 
   this->runMainLoop();
   return 0;
