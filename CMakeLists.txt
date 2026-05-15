@@ -47,6 +47,12 @@ target_include_directories(imgui
 # imgui_impl_glfw.cpp uses GLFW API symbols.
 target_link_libraries(imgui PUBLIC glfw)
 
+# nlohmann/json (single-header, header-only).
+add_library(nlohmann_json INTERFACE)
+target_include_directories(nlohmann_json INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependancies/json
+)
+
 # Main application target.
 add_executable(ting
     Source/Main.cpp
@@ -84,5 +90,6 @@ target_link_libraries(ting
         glad
         imgui
         glfw
+        nlohmann_json
         opengl32
 )

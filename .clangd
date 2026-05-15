@@ -7,9 +7,11 @@ CompileFlags:
     - -DGLFW_INCLUDE_NONE
     - -ID:/Projects/CPP/ting/Dependancies/ImGui
     - -ID:/Projects/CPP/ting/Dependancies/ImGui/backends
+    - -ID:/Projects/CPP/ting/Dependancies/json
     # Laptop
     - -IC:/Users/luci/Documents/project/cpp/Ting/Dependancies/GLFW/include
     - -IC:/Users/luci/Documents/project/cpp/Ting/Dependancies/GLAD
     - -IC:/Users/luci/Documents/project/cpp/Ting/Source
     - -IC:/Users/luci/Documents/project/cpp/Ting/Dependancies/ImGui
     - -IC:/Users/luci/Documents/project/cpp/Ting/Dependancies/ImGui/backends
+    - -IC:/Users/luci/Documents/project/cpp/Ting/Dependancies/json

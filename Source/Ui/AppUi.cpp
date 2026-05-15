@@ -16,8 +16,21 @@ void AppUi::draw(bool& vsync, const std::function<void()>& onSaveSettings) const
     glfwSwapInterval(vsync ? 1 : 0);
   }
   ImGui::Separator();
-  if (ImGui::Button("Save Settings")) {
+
+  const float buttonRowHeight = ImGui::GetFrameHeightWithSpacing();
+  const float spaceAboveButton = ImGui::GetContentRegionAvail().y - buttonRowHeight;
+  if (spaceAboveButton > 0.0f) {
+    ImGui::Dummy(ImVec2(0.0f, spaceAboveButton));
+  }
+
+  const float buttonWidth = ImGui::GetContentRegionAvail().x;
+  if (ImGui::Button("Save Settings", ImVec2(buttonWidth, 0.0f))) {
     onSaveSettings();
   }
+  ImGui::End();
+
+  ImGui::Begin("Macros");
+  ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), "Macros");
+
   ImGui::End();
 }
