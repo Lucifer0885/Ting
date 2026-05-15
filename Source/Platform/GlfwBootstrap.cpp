@@ -2,7 +2,9 @@
 
 #include "GLFW/glfw3.h"
 
-GlfwBootstrap::GlfwBootstrap() : m_ok(glfwInit() == GLFW_TRUE) {}
+GlfwBootstrap::GlfwBootstrap() : m_ok(glfwInit() == GLFW_TRUE) {
+  glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
+}
 
 GlfwBootstrap::~GlfwBootstrap() {
   if (this->m_ok) {
