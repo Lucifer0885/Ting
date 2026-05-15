@@ -1,27 +1,26 @@
 #pragma once
 
 #include "MacroManager/MacroManager.hpp"
-
-struct GLFWwindow;
+#include "Platform/GlfwBootstrap.hpp"
+#include "Platform/GlfwWindow.hpp"
+#include "Ui/AppUi.hpp"
+#include "Ui/ImGuiLayer.hpp"
 
 class Application {
-  private:
+private:
+  GlfwBootstrap m_glfw;
+  GlfwWindow m_window;
   MacroManager m_macroManager;
-  GLFWwindow* m_window = nullptr;
+  ImGuiLayer m_imgui;
+  AppUi m_appUi;
   bool m_vsync = true;
-  bool m_imguiInitialized = false;
 
   void saveSettings();
-  bool initializeWindow();
-  bool initializeOpenGL();
-  bool initializeImGui();
-  void renderUI();
   void runMainLoop();
-  void destroyImGui();
-  void destroyWindow();
 
-  public:
-    Application();
-    ~Application();
-    int run();
+public:
+  Application() = default;
+  ~Application() = default;
+
+  int run();
 };

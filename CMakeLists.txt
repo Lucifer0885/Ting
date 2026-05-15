@@ -51,8 +51,13 @@ target_link_libraries(imgui PUBLIC glfw)
 add_executable(ting
     Source/Main.cpp
     Source/Application.cpp
+    Source/Graphics/OpenGlContext.cpp
     Source/Logger/Logger.cpp
     Source/MacroManager/MacroManager.cpp
+    Source/Platform/GlfwBootstrap.cpp
+    Source/Platform/GlfwWindow.cpp
+    Source/Ui/AppUi.cpp
+    Source/Ui/ImGuiLayer.cpp
 )
 
 # GLFW_INCLUDE_NONE is used to prevent the GLFW header from including the OpenGL header.
