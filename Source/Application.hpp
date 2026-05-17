@@ -1,6 +1,7 @@
 #pragma once
 
-#include "MacroManager/MacroManager.hpp"
+#include "Macro/MacroManager/MacroManager.hpp"
+#include "SettingsManager/SettingsManager.hpp"
 #include "Platform/GlfwBootstrap.hpp"
 #include "Platform/GlfwWindow.hpp"
 #include "Ui/AppUi.hpp"
@@ -13,9 +14,8 @@ private:
   MacroManager m_macroManager;
   ImGuiLayer m_imgui;
   AppUi m_appUi;
-  bool m_vsync = true;
+  SettingsManager m_settingsManager;
 
-  void saveSettings();
   void runMainLoop();
 
 public:

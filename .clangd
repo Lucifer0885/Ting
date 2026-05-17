@@ -1,17 +1,22 @@
+# compile_commands.json in the project root is picked up automatically.
+# These flags fix MSVC commands (cl.exe -std:c++latest) for clangd's Clang parser.
+CompileFlags:
+  CompilationDatabase: .
+  Compiler: clang++
+  Add:
+    - -std=c++23
+    - -fms-compatibility
+    - -fms-extensions
+  Remove:
+    - -std:c++latest
+
+---
+# Headers are not listed in compile_commands.json; give them an explicit C++23 parse.
+If:
+  PathMatch: [.*\.h, .*\.hpp]
 CompileFlags:
   Add:
-    # Desktop
-    - -ID:/Projects/CPP/ting/Dependancies/GLFW/include
-    - -ID:/Projects/CPP/ting/Dependancies/GLAD
-    - -ID:/Projects/CPP/ting/Source
-    - -DGLFW_INCLUDE_NONE
-    - -ID:/Projects/CPP/ting/Dependancies/ImGui
-    - -ID:/Projects/CPP/ting/Dependancies/ImGui/backends
-    - -ID:/Projects/CPP/ting/Dependancies/json
-    # Laptop
-    - -IC:/Users/luci/Documents/project/cpp/Ting/Dependancies/GLFW/include
-    - -IC:/Users/luci/Documents/project/cpp/Ting/Dependancies/GLAD
-    - -IC:/Users/luci/Documents/project/cpp/Ting/Source
-    - -IC:/Users/luci/Documents/project/cpp/Ting/Dependancies/ImGui
-    - -IC:/Users/luci/Documents/project/cpp/Ting/Dependancies/ImGui/backends
-    - -IC:/Users/luci/Documents/project/cpp/Ting/Dependancies/json
+    - -std=c++23
+    - -xc++-header
+    - -fms-compatibility
+    - -fms-extensions

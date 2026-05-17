@@ -1,2 +1,5 @@
 build/
 steps/
+buildclangd/
+compile_commands.json
+.cache/

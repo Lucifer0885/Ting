@@ -4,7 +4,6 @@
 #include "Logger/Logger.hpp"
 
 int Application::run() {
-  Logger::getInstance().info("Application running");
 
   if (!this->m_glfw.ok()) {
     Logger::getInstance().error("Could not initialize GLFW");
@@ -16,14 +15,14 @@ int Application::run() {
     return -1;
   }
 
-  this->m_window.setOnCloseRequest([this]() { this->saveSettings(); });
+  this->m_window.setOnCloseRequest([this]() { this->m_settingsManager.saveSettings(); });
 
   if (!OpenGlContext::attach(this->m_window)) {
     Logger::getInstance().error("Could not initialize OpenGL");
     return -1;
   }
 
-  this->m_window.setSwapInterval(this->m_vsync ? 1 : 0);
+  this->m_window.setSwapInterval(this->m_settingsManager.getVsync() ? 1 : 0);
   OpenGlContext::setClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
   if (!this->m_imgui.init(this->m_window, "#version 460")) {
@@ -37,17 +36,13 @@ int Application::run() {
   return 0;
 }
 
-void Application::saveSettings() {
-  Logger::getInstance().info("Saving Settings...");
-}
-
 void Application::runMainLoop() {
   while (!this->m_window.shouldClose()) {
     this->m_window.pollEvents();
     this->m_macroManager.poll();
 
     this->m_imgui.newFrame();
-    this->m_appUi.draw(this->m_vsync, [this]() { this->saveSettings(); });
+    this->m_appUi.draw(this->m_settingsManager, [this]() { this->m_settingsManager.saveSettings(); });
     this->m_imgui.render();
 
     this->m_window.swapBuffers();

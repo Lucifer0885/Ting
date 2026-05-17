@@ -59,7 +59,8 @@ add_executable(ting
     Source/Application.cpp
     Source/Graphics/OpenGlContext.cpp
     Source/Logger/Logger.cpp
-    Source/MacroManager/MacroManager.cpp
+    Source/Macro/MacroManager/MacroManager.cpp
+    Source/SettingsManager/SettingsManager.cpp
     Source/Platform/GlfwBootstrap.cpp
     Source/Platform/GlfwWindow.cpp
     Source/Ui/AppUi.cpp

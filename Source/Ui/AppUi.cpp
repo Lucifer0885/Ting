@@ -1,9 +1,11 @@
 #include "Ui/AppUi.hpp"
 
+#include "SettingsManager/SettingsManager.hpp"
 #include "GLFW/glfw3.h"
 #include "imgui.h"
 
-void AppUi::draw(bool& vsync, const std::function<void()>& onSaveSettings) const {
+void AppUi::draw(SettingsManager& settingsManager, const std::function<void()>& onSaveSettings) const {
+  bool* vsync = settingsManager.vsyncMutable();
   ImGuiIO& io = ImGui::GetIO();
 
   ImGui::Begin("Ting TnL");
@@ -12,8 +14,8 @@ void AppUi::draw(bool& vsync, const std::function<void()>& onSaveSettings) const
 
   ImGui::Begin("Settings");
   ImGui::Separator();
-  if (ImGui::Checkbox("VSync", &vsync)) {
-    glfwSwapInterval(vsync ? 1 : 0);
+  if (ImGui::Checkbox("VSync", vsync)) {
+    glfwSwapInterval(*vsync ? 1 : 0);
   }
   ImGui::Separator();
 
