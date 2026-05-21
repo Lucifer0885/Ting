@@ -32,11 +32,13 @@ public:
   void restore();
   void iconify();
   void maximize();
-  void minimize();
 
 private:
   GLFWwindow* m_window = nullptr;
   std::function<void()> m_onCloseRequest;
+  int m_isMaximized = 1;
+  int m_isIconified = 0;
+  int m_isRestored = 0;
 
   static void closeCallback(GLFWwindow* window);
 };

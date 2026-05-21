@@ -81,6 +81,31 @@ void GlfwWindow::requestClose() {
   }
 }
 
+void GlfwWindow::restore() {
+  if (this->m_window != nullptr) {
+    glfwRestoreWindow(this->m_window);
+  }
+}
+
+void GlfwWindow::iconify() {
+  if (this->m_window != nullptr) {
+    glfwIconifyWindow(this->m_window);
+  }
+}
+
+void GlfwWindow::maximize() {
+  if (this->m_window != nullptr) {
+    this->m_isMaximized = !this->m_isMaximized;
+    if (this->m_isMaximized) {
+      glfwMaximizeWindow(this->m_window);
+    } else {
+      glfwRestoreWindow(this->m_window);
+    }
+    const std::string isMaximized = glfwGetWindowAttrib(this->m_window, GLFW_MAXIMIZED) ? "maximized" : "minimized";
+      Logger::getInstance().info("Window is: " + isMaximized);
+    }
+}
+
 void GlfwWindow::closeCallback(GLFWwindow* window) {
   Logger::getInstance().info("User requested window close...");
   auto* self = static_cast<GlfwWindow*>(glfwGetWindowUserPointer(window));

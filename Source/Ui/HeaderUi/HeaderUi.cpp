@@ -33,7 +33,9 @@ void HeaderUi::draw(GlfwWindow& window, const std::string_view& title) const {
 
   ImGui::Button("-", ImVec2(buttonSize, buttonSize));
   ImGui::SameLine(0.0f, spacing);
-  ImGui::Button("*", ImVec2(buttonSize, buttonSize));
+  if (ImGui::Button("*", ImVec2(buttonSize, buttonSize))) {
+    window.maximize();
+  }
   ImGui::SameLine(0.0f, spacing);
   if (ImGui::Button("X", ImVec2(buttonSize, buttonSize))) {
     window.requestClose();
