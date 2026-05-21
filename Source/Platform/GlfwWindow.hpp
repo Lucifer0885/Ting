@@ -28,6 +28,12 @@ public:
   void setSwapInterval(int interval) const;
   void setOnCloseRequest(std::function<void()> callback);
 
+  void requestClose();
+  void restore();
+  void iconify();
+  void maximize();
+  void minimize();
+
 private:
   GLFWwindow* m_window = nullptr;
   std::function<void()> m_onCloseRequest;

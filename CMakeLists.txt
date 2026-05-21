@@ -65,6 +65,7 @@ add_executable(ting
     Source/Platform/GlfwWindow.cpp
     Source/Ui/AppUi.cpp
     Source/Ui/ImGuiLayer.cpp
+    Source/Ui/HeaderUi/HeaderUi.cpp
 )
 
 # GLFW_INCLUDE_NONE is used to prevent the GLFW header from including the OpenGL header.

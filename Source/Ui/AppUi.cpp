@@ -4,15 +4,13 @@
 #include "GLFW/glfw3.h"
 #include "imgui.h"
 
-void AppUi::draw(SettingsManager& settingsManager, const std::function<void()>& onSaveSettings) const {
+void AppUi::draw(SettingsManager& settingsManager, GlfwWindow& window, const std::function<void()>& onSaveSettings) const {
+  this->m_header.draw(window, "Ting TnL");
+
   bool* vsync = settingsManager.vsyncMutable();
-  ImGuiIO& io = ImGui::GetIO();
 
-  ImGui::Begin("Ting TnL");
-  ImGui::Text("(%d FPS)", static_cast<int>(io.Framerate));
-  ImGui::End();
-
-  ImGui::Begin("Settings");
+  ImGui::Begin("Settings", nullptr, ImGuiWindowFlags_NoTitleBar  | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_AlwaysAutoResize);
+  ImGui::TextColored(ImVec4(1.0f, 1.0f, 1.0f, 1.0f), "Settings");
   ImGui::Separator();
   if (ImGui::Checkbox("VSync", vsync)) {
     glfwSwapInterval(*vsync ? 1 : 0);

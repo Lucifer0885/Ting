@@ -75,6 +75,12 @@ void GlfwWindow::setOnCloseRequest(std::function<void()> callback) {
   glfwSetWindowCloseCallback(this->m_window, &GlfwWindow::closeCallback);
 }
 
+void GlfwWindow::requestClose() {
+  if (this->m_window != nullptr) {
+    glfwSetWindowShouldClose(this->m_window, GLFW_TRUE);
+  }
+}
+
 void GlfwWindow::closeCallback(GLFWwindow* window) {
   Logger::getInstance().info("User requested window close...");
   auto* self = static_cast<GlfwWindow*>(glfwGetWindowUserPointer(window));

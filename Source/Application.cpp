@@ -42,7 +42,7 @@ void Application::runMainLoop() {
     this->m_macroManager.poll();
 
     this->m_imgui.newFrame();
-    this->m_appUi.draw(this->m_settingsManager, [this]() { this->m_settingsManager.saveSettings(); });
+    this->m_appUi.draw(this->m_settingsManager, this->m_window, [this]() { this->m_settingsManager.saveSettings(); });
     this->m_imgui.render();
 
     this->m_window.swapBuffers();
